@@ -1958,24 +1958,32 @@
     ]
   },
   "packageFolders": {
-    "/home/Lemeson/.nuget/packages/": {}
+    "C:\\Users\\lelox\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/Lemeson/Documentos/Angular/AlunosProfessores/SmartSchool_WebAPI/SmartSchool_WebAPI.csproj",
-      "projectName": "SmartSchool_WebAPI",
-      "projectPath": "/home/Lemeson/Documentos/Angular/AlunosProfessores/SmartSchool_WebAPI/SmartSchool_WebAPI.csproj",
-      "packagesPath": "/home/Lemeson/.nuget/packages/",
-      "outputPath": "/home/Lemeson/Documentos/Angular/AlunosProfessores/SmartSchool_WebAPI/obj/",
+      "projectUniqueName": "C:\\Users\\lelox\\OneDrive\\Área de Trabalho\\FIT\\DesagioGF\\GestaoDeFormulario_WebAPI\\GestaoDeFormulario_WebAPI.csproj",
+      "projectName": "GestaoDeFormulario_WebAPI",
+      "projectPath": "C:\\Users\\lelox\\OneDrive\\Área de Trabalho\\FIT\\DesagioGF\\GestaoDeFormulario_WebAPI\\GestaoDeFormulario_WebAPI.csproj",
+      "packagesPath": "C:\\Users\\lelox\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lelox\\OneDrive\\Área de Trabalho\\FIT\\DesagioGF\\GestaoDeFormulario_WebAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/Lemeson/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\lelox\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2042,7 +2050,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/snap/dotnet-sdk/229/sdk/7.0.404/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

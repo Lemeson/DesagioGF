@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SmartSchool_WebAPI.Data;
-using SmartSchool_WebAPI.Models;
+using GestaoDeFormulario_WebAPI.Data;
+using GestaoDeFormulario_WebAPI.Models;
 
-namespace SmartSchool_WebAPI.Controllers
+namespace GestaoDeFormulario_WebAPI.Controllers
 
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LeadsController : ControllerBase
+    public class LeadController : ControllerBase
     {
         private readonly IRepository repo;
 
@@ -21,7 +21,7 @@ namespace SmartSchool_WebAPI.Controllers
         {
             try
             {
-                var result = await this.repo.GetAllLeadsAsync(true);
+                var result = await this.repo.GetAllLeadsAsync();
 
                 return Ok(result);
             }
@@ -38,7 +38,7 @@ namespace SmartSchool_WebAPI.Controllers
         {
             try
             {
-                var result = await this.repo.GetLeadAsyncById(AlunoId, true);
+                var result = await this.repo.GetLeadsAsyncById(LeadId);
 
                 return Ok(result);
             }
@@ -77,7 +77,7 @@ namespace SmartSchool_WebAPI.Controllers
         {
             try
             {
-                var lead = await this.repo.GetLeadsAsyncById(leadId);
+                var lead = await this.repo.GetLeadsAsyncById(leadsId);
                 if(lead == null) return NotFound();
 
                 this.repo.Update(model);
@@ -101,7 +101,7 @@ namespace SmartSchool_WebAPI.Controllers
         {
             try
             {
-                var lead = await this.repo.GetLeadAsyncById(leadId, false);
+                var lead = await this.repo.GetLeadsAsyncById(leadId);
                 if (lead == null) return NotFound();
 
                 this.repo.Delete(lead);

@@ -1,6 +1,6 @@
-﻿using SmartSchool_WebAPI.Models;
+﻿using GestaoDeFormulario_WebAPI.Models;
 
-namespace SmartSchool_WebAPI.Data
+namespace GestaoDeFormulario_WebAPI.Data
 {
     public interface IRepository
     {
@@ -11,9 +11,9 @@ namespace SmartSchool_WebAPI.Data
         Task<bool> SaveChangesAsync();
 
         //ALUNO
-        Task<Aluno[]> GetAllLeadsAsync(bool includeProfessor);
+        Task<Lead[]> GetAllLeadsAsync();
         //Task<Aluno[]> GetLeadsAsyncByDisciplinaId(int disciplinaId, bool includeDisciplina);
-        Task<Aluno> GetLeadsAsyncById(int alunoId, bool includeProfessor);
+        Task<Lead> GetLeadsAsyncById(int leadId);
 
     }
 }

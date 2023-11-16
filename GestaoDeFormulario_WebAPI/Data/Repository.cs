@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SmartSchool_WebAPI.Models;
+using GestaoDeFormulario_WebAPI.Models;
 
-namespace SmartSchool_WebAPI.Data
+namespace GestaoDeFormulario_WebAPI.Data
 {
     public class Repository : IRepository //herda de IRepository e aqui os métodos definidos em IRepository tomam "vida"
     {
@@ -39,7 +39,7 @@ namespace SmartSchool_WebAPI.Data
         }
         public async Task<Lead> GetLeadsAsyncById(int leadId)
         {
-            IQueryable<Lead> query = _context.Alunos;
+            IQueryable<Lead> query = _context.Leads;
 
             query = query.AsNoTracking()
                          .OrderBy(lead => lead.id)
