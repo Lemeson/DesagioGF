@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SmartSchool_WebAPI.Data;
 using SmartSchool_WebAPI.Models;
-using System.Data;
 
 namespace SmartSchool_WebAPI.Controllers
+
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProfessorController : ControllerBase
+    public class LeadsController : ControllerBase
     {
         private readonly IRepository repo;
 
-        public ProfessorController(IRepository repo)  //maneira de fazer o aluno conversar com BD
+        public LeadController(IRepository repo)  //maneira de fazer o aluno conversar com BD
         {
             this.repo = repo;
         }
@@ -21,7 +21,7 @@ namespace SmartSchool_WebAPI.Controllers
         {
             try
             {
-                var result = await this.repo.GetAllProfessoresAsync(true);
+                var result = await this.repo.GetAllLeadsAsync(true);
 
                 return Ok(result);
             }
@@ -33,12 +33,12 @@ namespace SmartSchool_WebAPI.Controllers
             }
         }
 
-        [HttpGet("{ProfessorId}")]
-        public async Task<IActionResult> GetByProfessorId(int ProfessorId)
+        [HttpGet("{LeadId}")]
+        public async Task<IActionResult> GetByLeadId(int LeadId)
         {
             try
             {
-                var result = await this.repo.GetProfessorAsyncById(ProfessorId, true);
+                var result = await this.repo.GetLeadAsyncById(AlunoId, true);
 
                 return Ok(result);
             }
@@ -50,32 +50,15 @@ namespace SmartSchool_WebAPI.Controllers
             }
         }
 
-        [HttpGet("ByAlunoId/{alunoId}")]
-        public async Task<IActionResult> GetByDisciplinaId(int alunoId)
-        {
-            try
-            {
-                var result = await this.repo.GetProfessoresAsyncByAlunoId(alunoId, true);
-
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-
-                return BadRequest($"Erro: {ex.Message}");
-
-            }
-
-        }
 
         [HttpPost]
-        public async Task<IActionResult> Post(Professor model)
+        public async Task<IActionResult> Post(Lead model)
         {
             try
             {
                 this.repo.Add(model);
 
-                if (await this.repo.SaveChangesAsync())
+                if(await this.repo.SaveChangesAsync())
                 {
                     return Ok(model);
                 }
@@ -89,13 +72,13 @@ namespace SmartSchool_WebAPI.Controllers
             return BadRequest();
         }
 
-        [HttpPut("{professorId}")]
-        public async Task<IActionResult> put(int professorId, Professor model)
+        [HttpPut("{leadsId}")]
+        public async Task<IActionResult> put(int leadsId, Lead model)
         {
             try
             {
-                var professor = await this.repo.GetProfessorAsyncById(professorId, false);
-                if (professor == null) return NotFound();
+                var lead = await this.repo.GetLeadsAsyncById(leadId);
+                if(lead == null) return NotFound();
 
                 this.repo.Update(model);
 
@@ -113,15 +96,15 @@ namespace SmartSchool_WebAPI.Controllers
             return BadRequest();
         }
 
-        [HttpDelete("{professorId}")]
-        public async Task<IActionResult> delete(int professorId)
+        [HttpDelete("{leadId}")]
+        public async Task<IActionResult> delete(int leadId)
         {
             try
             {
-                var professor = await this.repo.GetProfessorAsyncById(professorId, false);
-                if (professor == null) return NotFound();
+                var lead = await this.repo.GetLeadAsyncById(leadId, false);
+                if (lead == null) return NotFound();
 
-                this.repo.Delete(professor);
+                this.repo.Delete(lead);
 
                 if (await this.repo.SaveChangesAsync())
                 {

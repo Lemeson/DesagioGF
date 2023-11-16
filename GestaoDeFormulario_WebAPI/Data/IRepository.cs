@@ -11,13 +11,9 @@ namespace SmartSchool_WebAPI.Data
         Task<bool> SaveChangesAsync();
 
         //ALUNO
-        Task<Aluno[]> GetAllAlunosAsync(bool includeProfessor);
-        Task<Aluno[]> GetAlunosAsyncByDisciplinaId(int disciplinaId, bool includeDisciplina);
-        Task<Aluno> GetAlunoAsyncById(int alunoId, bool includeProfessor);
+        Task<Aluno[]> GetAllLeadsAsync(bool includeProfessor);
+        //Task<Aluno[]> GetLeadsAsyncByDisciplinaId(int disciplinaId, bool includeDisciplina);
+        Task<Aluno> GetLeadsAsyncById(int alunoId, bool includeProfessor);
 
-        //PROFESSOR
-        Task<Professor[]> GetAllProfessoresAsync(bool includeAluno);
-        Task<Professor> GetProfessorAsyncById(int professorId, bool includeAluno);
-        Task<Professor[]> GetProfessoresAsyncByAlunoId(int alunoId, bool includeDisciplina);
     }
 }

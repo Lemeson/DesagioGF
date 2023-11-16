@@ -1,76 +1,55 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SmartSchool_WebAPI.Models;
+using GestaoDeFormulario_WebAPI.Models;
 
-namespace SmartSchool_WebAPI.Data
+namespace GestaoDeFormulario_WebAPI.Data
 {
      public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options) { } //da opsções de CRUD -- obrigatório
-        public DbSet<Aluno> Alunos { get; set; }
-        public DbSet<Professor> Professores { get; set; }
-        public DbSet<Disciplina> Disciplinas { get; set; }
-        public DbSet<AlunoDisciplina> AlunosDisciplinas { get; set; }
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { } //da opções de CRUD -- obrigatório
+        public DbSet<Lead> Leads { get; set; }
+      //  public DbSet<Professor> Professores { get; set; }
+        //public DbSet<AgendarReuniao> AgendarReuniaos { get; set; } // para evitar problemas com o banco de dado ao inves de reunioes fica reuniaos //disicplina
+        //public DbSet<LeadReuniao> LeadReuniaos { get; set; } // para evitar problemas com o banco de dado ao inves de reunioes fica reuniaos //aluno discuplina
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<AlunoDisciplina>()
-                .HasKey(AD => new { AD.alunoId, AD.disciplinaId });
+            //builder.Entity<LeadReuniao>()
+                // .HasKey(AD => new { AD.leadId, AD.agendarReuniaoId }); //vinculo
 
-            builder.Entity<Professor>()
-                .HasData(new List<Professor>(){
-                    new Professor(1, "Lauro"),
-                    new Professor(2, "Roberto"),
-                    new Professor(3, "Ronaldo"),
-                    new Professor(4, "Rodrigo"),
-                    new Professor(5, "Alexandre"),
-                });
+            //builder.Entity<Professor>()
+            //    .HasData(new List<Professor>(){
+            //        new Professor(1, "Lauro"),
+            //        new Professor(2, "Roberto"),
+            //        new Professor(3, "Ronaldo"),
+            //        new Professor(4, "Rodrigo"),
+            //        new Professor(5, "Alexandre"),
+            //    });
 
-            builder.Entity<Disciplina>()
-                .HasData(new List<Disciplina>{
-                    new Disciplina(1, "Matemática", 1),
-                    new Disciplina(2, "Física", 2),
-                    new Disciplina(3, "Português", 3),
-                    new Disciplina(4, "Inglês", 4),
-                    new Disciplina(5, "Programação", 5)
-                });
+           // builder.Entity<AgendarReuniao>()
+           //     .HasData(new List<AgendarReuniao>{
+           //         new AgendarReuniao(1, "sim", "16/11/2024"),
+           //         new AgendarReuniao(2, "não", "16/11/2024"),
+           //         new AgendarReuniao(3, "sim", "16/11/2024"),
+           //         new AgendarReuniao(4, "não", "16/11/2024"),
+           //         new AgendarReuniao(5, "sim", "16/11/2023")
+           //     });
 
-            builder.Entity<Aluno>()
-                .HasData(new List<Aluno>(){
-                    new Aluno(1, "Marta", "Kent", "33225555"),
-                    new Aluno(2, "Paula", "Isabela", "3354288"),
-                    new Aluno(3, "Laura", "Antonia", "55668899"),
-                    new Aluno(4, "Luiza", "Maria", "6565659"),
-                    new Aluno(5, "Lucas", "Machado", "565685415"),
-                    new Aluno(6, "Pedro", "Alvares", "456454545"),
-                    new Aluno(7, "Paulo", "José", "9874512")
-                });
+            builder.Entity<Lead>()
+                .HasData(new List<Lead>(){
+                    new Lead(1, "Empresa1", "07122000", "Rua 0", "1A", "Bairro 1", "Cidade 1", "SP", "email1@mail.com", "1234-1234", "Contato 1", "nada a declarar","16/11/2024"),
+                    new Lead(2, "Empresa2", "07122000", "Rua 0", "1A", "Bairro 1", "Cidade 1", "SP", "email1@mail.com", "1234-1234", "Contato 1", "nada a declarar","16/11/2024"),
+                    new Lead(3, "Empresa3", "07122000", "Rua 0", "1A", "Bairro 1", "Cidade 1", "SP", "email1@mail.com", "1234-1234", "Contato 1", "nada a declarar","16/11/2024"),
+                    new Lead(4, "Empresa4", "07122000", "Rua 0", "1A", "Bairro 1", "Cidade 1", "SP", "email1@mail.com", "1234-1234", "Contato 1", "nada a declarar","16/11/2024"),
+                    new Lead(5, "Empresa5", "07122000", "Rua 0", "1A", "Bairro 1", "Cidade 1", "SP", "email1@mail.com", "1234-1234", "Contato 1", "nada a declarar","16/11/2024")                });
 
-            builder.Entity<AlunoDisciplina>()
-                .HasData(new List<AlunoDisciplina>() {
-                    new AlunoDisciplina() {alunoId = 1, disciplinaId = 2 },
-                    new AlunoDisciplina() {alunoId = 1, disciplinaId = 4 },
-                    new AlunoDisciplina() {alunoId = 1, disciplinaId = 5 },
-                    new AlunoDisciplina() {alunoId = 2, disciplinaId = 1 },
-                    new AlunoDisciplina() {alunoId = 2, disciplinaId = 2 },
-                    new AlunoDisciplina() {alunoId = 2, disciplinaId = 5 },
-                    new AlunoDisciplina() {alunoId = 3, disciplinaId = 1 },
-                    new AlunoDisciplina() {alunoId = 3, disciplinaId = 2 },
-                    new AlunoDisciplina() {alunoId = 3, disciplinaId = 3 },
-                    new AlunoDisciplina() {alunoId = 4, disciplinaId = 1 },
-                    new AlunoDisciplina() {alunoId = 4, disciplinaId = 4 },
-                    new AlunoDisciplina() {alunoId = 4, disciplinaId = 5 },
-                    new AlunoDisciplina() {alunoId = 5, disciplinaId = 4 },
-                    new AlunoDisciplina() {alunoId = 5, disciplinaId = 5 },
-                    new AlunoDisciplina() {alunoId = 6, disciplinaId = 1 },
-                    new AlunoDisciplina() {alunoId = 6, disciplinaId = 2 },
-                    new AlunoDisciplina() {alunoId = 6, disciplinaId = 3 },
-                    new AlunoDisciplina() {alunoId = 6, disciplinaId = 4 },
-                    new AlunoDisciplina() {alunoId = 7, disciplinaId = 1 },
-                    new AlunoDisciplina() {alunoId = 7, disciplinaId = 2 },
-                    new AlunoDisciplina() {alunoId = 7, disciplinaId = 3 },
-                    new AlunoDisciplina() {alunoId = 7, disciplinaId = 4 },
-                    new AlunoDisciplina() {alunoId = 7, disciplinaId = 5 }
-                });
+           // builder.Entity<LeadAgendarReuniao>()
+           //     .HasData(new List<LeadAgendarReuniao>() {
+           //         new LeadAgendarReuniao() {leadId = 1, agendarReuniaoId = 1 },
+           //         new LeadAgendarReuniao() {leadId = 2, agendarReuniaoId = 2 },
+           //         new LeadAgendarReuniao() {leadId = 3, agendarReuniaoId = 3 },
+           //         new LeadAgendarReuniao() {leadId = 4, agendarReuniaoId = 4 },
+           //         new LeadAgendarReuniao() {leadId = 5, agendarReuniaoId = 5 }
+           //     });
         }
     }
 }
