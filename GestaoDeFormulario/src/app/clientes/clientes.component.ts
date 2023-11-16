@@ -1,13 +1,13 @@
 import { Component, TemplateRef } from '@angular/core';
-import { Aluno } from '../models/Aluno';
+import { Aluno } from '../models/Cliente';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { AlunoService } from './aluno.service';
+import { AlunoService } from './cliente.service';
 
 @Component({
   selector: 'app-alunos',
-  templateUrl: './alunos.component.html',
-  styleUrls: ['./alunos.component.css']
+  templateUrl: './clientes.component.html',
+  styleUrls: ['./clientes.component.css']
 })
 export class AlunosComponent {
 
@@ -17,17 +17,8 @@ export class AlunosComponent {
   alunoSelecionado: Aluno | null = null;
   simpleText: string = '';
 
-  public alunos: Aluno[] = []; 
+  public alunos: Cliente[] = []; 
 
-  //= [
-  //{id: 1,nome : 'Maria', sobrenome : 'Silva', telefone : '123456'},
-  //{id: 2,nome : 'Marta', sobrenome : 'Marta', telefone : '123456'},
-  //{id: 3,nome: 'Leandro', sobrenome : 'Querido', telefone : '123456'},
-  //  {id: 4,nome : 'Pedro', sobrenome : 'Tesouro', telefone : '123456'},
-  //  {id: 5,nome : 'Zeca', sobrenome : 'Silva', telefone : '123456'},
-  //  {id: 6,nome: 'Feni', sobrenome : 'Silva', telefone : '123456'},
-  //  {id: 7,nome : 'João', sobrenome : 'Silva', telefone : '123456'},
-  //];
 
 
  
@@ -48,8 +39,8 @@ export class AlunosComponent {
 
   carregarAluno() {
   this.alunoService.getAll().subscribe({
-    next: (alunos: Aluno[]) => {
-      this.alunos = alunos;
+    next: (alunos: Cliente[]) => {
+      this.clientes = clientes;
     },
     error: (erro: any) => {
       console.error(erro);
@@ -71,12 +62,12 @@ export class AlunosComponent {
   }
 
   limparSelecao(){
-    this.alunoSelecionado = null;
+    this.clienteSelecionado = null;
   }
 
   alunoSelect(aluno: Aluno){
-    this.alunoSelecionado = aluno;
-    this.alunoForm.patchValue(aluno); //patchValue é um método do FormGroup. Aluno tem o mesmo propriedades criaForm o patchValue vai preencher o formulário com os dados do aluno selecionado. Ele reconhece automaticamente.
+    this.clienteSelecionado = cliente;
+    this.clie teForm.patchValue(cliente); //patchValue é um método do FormGroup. Aluno tem o mesmo propriedades criaForm o patchValue vai preencher o formulário com os dados do aluno selecionado. Ele reconhece automaticamente.
   }
 
 }

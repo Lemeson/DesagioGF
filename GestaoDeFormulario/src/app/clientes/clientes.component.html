@@ -1,0 +1,64 @@
+<!-- Angular Component HTML -->
+<div class="table-responsive">
+    <div class="row">
+        <div class="col-sm-6" *ngIf="leadSelecionado">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <app-titulo [titulo]="'Cód. Cliente(a): ' + leadSelecionado.id"></app-titulo>
+                </div>
+                <div>
+                    <button class="btn btn-outline-danger mt-2" (click)="limparSelecao()">Voltar</button>
+                </div>
+            </div>
+            
+            <form [formGroup]="leadForm" (submit)="leadSubmit()">
+                <div class="form-group mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Nome da Empresa</label>
+                    <input type="text" formControlName="nomeDaEmpresa" class="form-control">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Telefone</label>
+                    <input type="text" formControlName="telefone" class="form-control">
+                </div>
+                <!-- Add more form fields as needed -->
+                <div class="form-group">
+                    <hr>
+                    <button class="btn btn-success" [disabled]="!leadForm.valid">Enviar</button>
+                </div>
+            </form>
+        </div>
+
+        <div [ngClass]="{ 'col-sm-6': leadSelecionado, 'col-sm-12': !leadSelecionado}">
+            <form>
+                <app-titulo [titulo]="title"></app-titulo>
+                <table class="table table-xs table-hover">
+                    <thead class="thead-dark">
+                        <tr class="table-dark">
+                            <th scope="col">Visualizar</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome da Empresa</th>
+                            <th scope="col">Telefone</th>
+                            <!-- Add more table headers as needed -->
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let lead of leads">
+                            <td><button class="btn btn-outline-warning" (click)="leadSelect(lead)">Detalhe</button></td>
+                            <td scope="row">{{lead.id}}</td>
+                            <td>{{lead.nomeDaEmpresa}}</td>
+                            <td>{{lead.telefone}}</td>
+                            <!-- Display more lead properties as needed -->
+                            <td>
+                                <div class="btn-group">
+                                    <button (click)="openModal(template)" class="btn btn-outline-primary">Professores</button>
+                                    <button class="btn btn-outline-danger">Desativar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
