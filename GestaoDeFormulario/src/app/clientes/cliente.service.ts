@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Aluno } from '../models/Cliente';
+import { Cliente } from '../models/Cliente';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,11 +13,11 @@ export class AlunoService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Aluno[]>{
-    return this.http.get<Aluno[]>(`${this.baseUrl}`);
+  getAll(): Observable<Cliente[]>{
+    return this.http.get<Cliente[]>(`${this.baseUrl}`);
   }
 
-  getById(id: number): Observable<Aluno> {
-    return this.http.get<Aluno>(`${this.baseUrl}/${id}`);
+  getById(id: number): Observable<Cliente> {
+    return this.http.get<Cliente>(`${this.baseUrl}/${id}`);
   }
 }

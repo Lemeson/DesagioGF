@@ -1,5 +1,5 @@
 import { Component, TemplateRef } from '@angular/core';
-import { Aluno } from '../models/Cliente';
+import { Cliente } from '../models/Cliente';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlunoService } from './cliente.service';
@@ -14,7 +14,7 @@ export class AlunosComponent {
   modalRef?: BsModalRef;
   alunoForm: FormGroup = new FormGroup({});
   title = 'Alunos';
-  alunoSelecionado: Aluno | null = null;
+  alunoSelecionado: Cliente | null = null;
   simpleText: string = '';
 
   public alunos: Cliente[] = []; 
@@ -65,9 +65,9 @@ export class AlunosComponent {
     this.clienteSelecionado = null;
   }
 
-  alunoSelect(aluno: Aluno){
+  alunoSelect(aluno: Cliente){
     this.clienteSelecionado = cliente;
-    this.clie teForm.patchValue(cliente); //patchValue é um método do FormGroup. Aluno tem o mesmo propriedades criaForm o patchValue vai preencher o formulário com os dados do aluno selecionado. Ele reconhece automaticamente.
+    this.cliente teForm.patchValue(cliente); //patchValue é um método do FormGroup. Aluno tem o mesmo propriedades criaForm o patchValue vai preencher o formulário com os dados do aluno selecionado. Ele reconhece automaticamente.
   }
 
 }
