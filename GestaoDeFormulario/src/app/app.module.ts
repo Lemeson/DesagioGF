@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ClienteComponent } from './cliente/cliente.component';
+import { ClientesComponent } from './clientes/clientes.component';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     DashboardComponent,
     NavComponent,
     TituloComponent,
+    ClienteComponent,
+    ClientesComponent,
 
   ],
   imports: [
